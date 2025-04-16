@@ -1,0 +1,19 @@
+[project]
+name = "dados-painel"
+version = "0.1.0"
+description = "Módulo para extração e transformação de dados utilizados no Painel do OPP."
+authors = [
+    {name = "Bruno Azuma Balzano",email = "brunoazuma@usp.br"}
+]
+license = {text = "MIT License"}
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas (>=2.2.3,<3.0.0)",
+    "geopandas (>=1.0.1,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
