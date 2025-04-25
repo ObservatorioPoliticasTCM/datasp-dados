@@ -101,6 +101,26 @@ def package_resources(package: str,
 def load_resource(resource_id: str,
                   base_url: str = BASE_URL,
                   pandas_header:List[int]=[0]) -> pd.DataFrame:
+    """
+    Loads a resource from dados.prefeitura.sp.gov.br API as a pandas DataFrame.
+    
+    Args:
+        resource_id (str): Resource ID to fetch from the API
+        base_url (str, optional): Base API URL. Defaults to BASE_URL.
+        pandas_header (List[int], optional): List of row indices to use as column headers. 
+            Defaults to [0].
+    
+    Returns:
+        pd.DataFrame: Resource data loaded as a pandas DataFrame
+        
+    Raises:
+        ValueError: If resource is PDF or unsupported format
+        Exception: If API request fails or other errors occur
+        
+    Examples:
+        >>> df = load_resource("abc123")  # Single header row
+        >>> df = load_resource("xyz789", pandas_header=[0,1])  # Multi-index headers
+    """
     url = f'{base_url}/api/3/action/resource_show'
     params = {'id': resource_id}
     
