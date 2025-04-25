@@ -1,6 +1,6 @@
-
 import requests
 from typing import List, Dict
+import pandas as pd
 
 BASE_URL = "http://dados.prefeitura.sp.gov.br"
 
@@ -89,6 +89,7 @@ def package_resources(package: str,
             if filter is None or (name and filter.lower() in name.lower()):
                 filtered_resources.append({
                     'name': name,
+                    'id': resource.get('id', ''),
                     'url': resource.get('url', '')
                 })
 
@@ -96,3 +97,37 @@ def package_resources(package: str,
 
     except Exception as e:
         raise Exception(f"Error fetching resources: {str(e)}")
+
+def load_resource(resource_id: str,
+                  base_url: str = BASE_URL,
+                  pandas_header:List[int]=[0]) -> pd.DataFrame:
+    url = f'{base_url}/api/3/action/resource_show'
+    params = {'id': resource_id}
+    
+    try:
+        response = requests.get(url, params=params)
+        response.raise_for_status()
+        data = response.json()
+        
+        if data['success']:
+            result = data['result']
+            resource_url = result['url']
+            mimetype = result.get('mimetype', '').lower()
+            format = result.get('format', '').lower()
+            url_ext = resource_url.split('.')[-1].lower()
+            
+            if any(t in 'pdf' for t in [mimetype, format, url_ext]):
+                raise ValueError("PDF resources are not supported")
+                
+            if any(t in 'csv' for t in [mimetype, format, url_ext]):
+                return pd.read_csv(resource_url, header=pandas_header)
+            elif any(t in ['xls', 'xlsx', 'excel', 'ods'] for t in [mimetype, format, url_ext]):
+                return pd.read_excel(resource_url, header=pandas_header)
+            else:
+                raise ValueError(f"Unsupported file format: {mimetype or format or url_ext}")
+                
+        else:
+            raise ValueError("API request unsuccessful")
+            
+    except requests.exceptions.RequestException as e:
+        raise Exception(f"Error fetching resource: {str(e)}")
