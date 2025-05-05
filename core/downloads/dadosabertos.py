@@ -100,7 +100,7 @@ def package_resources(package: str,
 
 def load_resource(resource_id: str,
                   base_url: str = BASE_URL,
-                  pandas_header:List[int]=[0]) -> pd.DataFrame:
+                  pandas_kwargs:dict={}) -> pd.DataFrame:
     """
     Loads a resource from dados.prefeitura.sp.gov.br API as a pandas DataFrame.
     
@@ -140,9 +140,19 @@ def load_resource(resource_id: str,
                 raise ValueError("PDF resources are not supported")
                 
             if any(t in 'csv' for t in [mimetype, format, url_ext]):
-                return pd.read_csv(resource_url, header=pandas_header)
+                csv_default_kwargs = {
+                    'sep': ';',
+                    'decimal': ',',
+                    'thousands': '.',
+                    'encoding': 'latin1'
+                }
+                csv_default_kwargs.update(pandas_kwargs)
+                return pd.read_csv(resource_url, **csv_default_kwargs)
             elif any(t in ['xls', 'xlsx', 'excel', 'ods'] for t in [mimetype, format, url_ext]):
-                return pd.read_excel(resource_url, header=pandas_header)
+                excel_default_kwargs = {
+                }
+                excel_default_kwargs.update(pandas_kwargs)
+                return pd.read_excel(resource_url, **excel_default_kwargs)
             else:
                 raise ValueError(f"Unsupported file format: {mimetype or format or url_ext}")
                 
