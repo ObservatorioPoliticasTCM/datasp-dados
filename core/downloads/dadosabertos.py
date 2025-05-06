@@ -86,11 +86,17 @@ def package_resources(package: str,
         filtered_resources = []
         for resource in resources:
             name = resource.get('name', '')
-            if filter is None or (name and filter.lower() in name.lower()):
+            url = resource.get('url', '')
+            filename = url.split('/')[-1] if url else ''
+            
+            if filter is None or (
+                (name and filter.lower() in name.lower()) or 
+                (filename and filter.lower() in filename.lower())
+            ):
                 filtered_resources.append({
                     'name': name,
                     'id': resource.get('id', ''),
-                    'url': resource.get('url', '')
+                    'url': url
                 })
 
         return filtered_resources
