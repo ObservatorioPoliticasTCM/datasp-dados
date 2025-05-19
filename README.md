@@ -33,6 +33,8 @@ O diretório `notebooks` conterá um subdiretório para cada Grupo de Trabalho d
 
 O diretório `notebooks_outputs` conterá um subdiretório para cada Grupo de Trabalho do observatório, com os mesmos arquivos `.ipynb` dos subdiretórios de `notebooks`, mas com saída das células, para melhor visualização no github ou nbviewer.
 
-Por último, o diretório `data` conterá um subdiretório para cada Grupo de Trabalho do observatório, para o armazenamento de eventuais dados de entrada não disponíveis em fontes acessíveis via script.
+O diretório `data` conterá um subdiretório para cada Grupo de Trabalho do observatório, para o armazenamento de eventuais dados de entrada não disponíveis em fontes acessíveis via script.
+
+Por último, o diretório `data_output` conterá um subdiretório para cada Grupo de Trabalho do observatório, para o armazenamento dos dados de saída que serão consumidos no Qlik Sense. Entretanto, o diretório `data_output` não será mantido no GitHub.
 
 **IMPORTANTE:** para executar corretamente os notebooks, é necessário que o servidor do jupyter lab seja iniciado na raiz do projeto, para que os caminhos absolutos de importação estejam corretos.
