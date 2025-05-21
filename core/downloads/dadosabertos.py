@@ -86,11 +86,17 @@ def package_resources(package: str,
         filtered_resources = []
         for resource in resources:
             name = resource.get('name', '')
-            if filter is None or (name and filter.lower() in name.lower()):
+            url = resource.get('url', '')
+            filename = url.split('/')[-1] if url else ''
+            
+            if filter is None or (
+                (name and filter.lower() in name.lower()) or 
+                (filename and filter.lower() in filename.lower())
+            ):
                 filtered_resources.append({
                     'name': name,
                     'id': resource.get('id', ''),
-                    'url': resource.get('url', '')
+                    'url': url
                 })
 
         return filtered_resources
@@ -100,7 +106,27 @@ def package_resources(package: str,
 
 def load_resource(resource_id: str,
                   base_url: str = BASE_URL,
-                  pandas_header:List[int]=[0]) -> pd.DataFrame:
+                  pandas_kwargs:dict={}) -> pd.DataFrame:
+    """
+    Loads a resource from dados.prefeitura.sp.gov.br API as a pandas DataFrame.
+    
+    Args:
+        resource_id (str): Resource ID to fetch from the API
+        base_url (str, optional): Base API URL. Defaults to BASE_URL.
+        pandas_header (List[int], optional): List of row indices to use as column headers. 
+            Defaults to [0].
+    
+    Returns:
+        pd.DataFrame: Resource data loaded as a pandas DataFrame
+        
+    Raises:
+        ValueError: If resource is PDF or unsupported format
+        Exception: If API request fails or other errors occur
+        
+    Examples:
+        >>> df = load_resource("abc123")  # Single header row
+        >>> df = load_resource("xyz789", pandas_header=[0,1])  # Multi-index headers
+    """
     url = f'{base_url}/api/3/action/resource_show'
     params = {'id': resource_id}
     
@@ -120,9 +146,19 @@ def load_resource(resource_id: str,
                 raise ValueError("PDF resources are not supported")
                 
             if any(t in 'csv' for t in [mimetype, format, url_ext]):
-                return pd.read_csv(resource_url, header=pandas_header)
+                csv_default_kwargs = {
+                    'sep': ';',
+                    'decimal': ',',
+                    'thousands': '.',
+                    'encoding': 'latin1'
+                }
+                csv_default_kwargs.update(pandas_kwargs)
+                return pd.read_csv(resource_url, **csv_default_kwargs)
             elif any(t in ['xls', 'xlsx', 'excel', 'ods'] for t in [mimetype, format, url_ext]):
-                return pd.read_excel(resource_url, header=pandas_header)
+                excel_default_kwargs = {
+                }
+                excel_default_kwargs.update(pandas_kwargs)
+                return pd.read_excel(resource_url, **excel_default_kwargs)
             else:
                 raise ValueError(f"Unsupported file format: {mimetype or format or url_ext}")
                 
