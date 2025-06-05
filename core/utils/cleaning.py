@@ -7,4 +7,7 @@ def clean_subprefeitura(series:Series) -> Series:
         .apply(unidecode)
         .str.upper()
         .str.replace("'", ' ')
+        .str.replace('/', '-')
+        .str.replace(' PAULISTA', '')
+        .str.replace('-JARAGUA', '')
     )
