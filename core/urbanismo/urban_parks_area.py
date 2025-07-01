@@ -2,8 +2,8 @@ from geopandas import GeoDataFrame
 
 
 def prepare_tracts(df_tracts:GeoDataFrame,
-                   df_vegetation:GeoDataFrame = None,
-                   df_street_blocks:GeoDataFrame = None,
+                   df_vegetation:GeoDataFrame = GeoDataFrame(),
+                   df_street_blocks:GeoDataFrame = GeoDataFrame(),
                    tracts_id_col:str = None) -> GeoDataFrame:
     """
     Prepare census tracts by processing spatial overlays with optional vegetation and street block geometries.
@@ -19,14 +19,14 @@ def prepare_tracts(df_tracts:GeoDataFrame,
         - The function assumes that the input GeoDataFrames use compatible coordinate reference systems for spatial operations.
     """
 
-    if df_vegetation:
+    if not df_vegetation.empty:
         ol1 = df_tracts.overlay(df_vegetation,
                         how='difference',
                         keep_geom_type=True)
     else:
         ol1 = df_tracts
 
-    if df_street_blocks:
+    if not df_street_blocks.empty:
         if not tracts_id_col:
             tracts_id_col = df_tracts.columns[0]
 
