@@ -1,12 +1,18 @@
 import requests
 from typing import List, Dict
 import pandas as pd
+from requests.sessions import default_headers
 
 BASE_URL = "http://dados.prefeitura.sp.gov.br"
+    
+DEFAULT_HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Mobile Safari/537.36 Edg/142.0.0.0'
+}
 
 
 def get_package_list(filter: str = None,
-                     base_url: str = BASE_URL) -> List[str]:
+                     base_url: str = BASE_URL,
+                     headers: dict = DEFAULT_HEADERS) -> List[str]:
     """
     Fetches package list from dados.prefeitura.sp.gov.br API and returns as list
 
@@ -20,7 +26,7 @@ def get_package_list(filter: str = None,
 
     url = f'{base_url}/api/3/action/package_list'
     try:
-        response = requests.get(url)
+        response = requests.get(url, headers=default_headers)
         response.raise_for_status()
         data = response.json()
 
@@ -37,7 +43,7 @@ def get_package_list(filter: str = None,
         raise Exception(f"Error fetching data: {str(e)}")
 
 
-def package_show(package: str, base_url: str = BASE_URL) -> Dict:
+def package_show(package: str, base_url: str = BASE_URL, headers: dict = DEFAULT_HEADERS) -> Dict:
     """
     Fetches package details from dados.prefeitura.sp.gov.br API
 
@@ -52,7 +58,7 @@ def package_show(package: str, base_url: str = BASE_URL) -> Dict:
     params = {'id': package}
 
     try:
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, headers=headers)
         response.raise_for_status()
         data = response.json()
 
@@ -67,7 +73,8 @@ def package_show(package: str, base_url: str = BASE_URL) -> Dict:
 
 def package_resources(package: str,
                       filter: str = None,
-                      base_url: str = BASE_URL) -> List[Dict]:
+                      base_url: str = BASE_URL,
+                      headers: dict = DEFAULT_HEADERS) -> List[Dict]:
     """
     Fetches package resources from dados.prefeitura.sp.gov.br API
 
@@ -80,7 +87,7 @@ def package_resources(package: str,
         List[Dict]: List of filtered resources with name and url
     """
     try:
-        package_data = package_show(package, base_url)
+        package_data = package_show(package, base_url, headers)
         resources = package_data['resources']
 
         filtered_resources = []
@@ -106,6 +113,7 @@ def package_resources(package: str,
 
 def load_resource(resource_id: str,
                   base_url: str = BASE_URL,
+                  headers: dict = DEFAULT_HEADERS,
                   pandas_kwargs:dict={}) -> pd.DataFrame:
     """
     Loads a resource from dados.prefeitura.sp.gov.br API as a pandas DataFrame.
@@ -131,7 +139,7 @@ def load_resource(resource_id: str,
     params = {'id': resource_id}
     
     try:
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, headers=headers)
         response.raise_for_status()
         data = response.json()
         
