@@ -39,6 +39,6 @@ O diretório `data` contém:
 
 O diretório `data_output` contém um subdiretório para cada Grupo de Trabalho do observatório, para o armazenamento dos dados de saída que serão consumidos no Qlik Sense.
 
-Tanto o diretório `data_output` quanto o diretório `data/cache` são gerados na execução dos notebooks, mas não serão mantidos no GitHub.
+Tanto o diretório `data_output` quanto o diretório `data/cache` são gerados na execução dos notebooks, mas são ignorados pelo git.
 
-**IMPORTANTE:** para executar corretamente os notebooks, é necessário que o servidor do jupyter lab seja iniciado na raiz do projeto, para que os caminhos absolutos de importação estejam corretos.
+**IMPORTANTE:** para executar corretamente os notebooks, é necessário que o servidor do jupyter lab seja iniciado na raiz do projeto, para que os caminhos absolutos de importação estejam corretos. O arquivo `.vscode/settings.json` possui uma sugestão de configuração para a execução correta na extensão Jupyter do Visual Studio Code.
