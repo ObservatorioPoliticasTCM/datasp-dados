@@ -38,7 +38,7 @@ def get_package_list(filter: str = None,
 
     url = f'{base_url}/api/3/action/package_list'
     try:
-        response = requests.get(url, headers=default_headers)
+        response = requests.get(url, headers=headers)
         response.raise_for_status()
         data = response.json()
 
