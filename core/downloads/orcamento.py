@@ -120,6 +120,8 @@ def load_orcamento_r(year: int,
         descriptive message.
     """
     url = f'https://prefeitura.sp.gov.br/cidade/secretarias/upload/seplan/arquivos/Exercicio_{year}/basedadosDA_{year}.csv'
+    if year < 2024:
+        url = f'https://prefeitura.sp.gov.br/cidade/secretarias/upload/seplan/arquivos/Exercicio_{year}/basedadosDA_12{str(year)[-2:]}.csv'
     info(f"Fetching data from URL: {url}")
     try:
         response = requests.get(url, headers=headers, timeout=request_timeout)
