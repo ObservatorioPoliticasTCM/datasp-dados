@@ -74,6 +74,9 @@ def load_consultas(year: int,
         lambda c: 'Consulta Médica/Atendimento em Urgência/Emergência' if 'Urgência' in c else c
     )
 
+    # E removemos caracteres de nova linha nas colunas de texto
+    df = df.replace('\n', ' ', regex=True)
+
     # Por último, adicionamos uma coluna com o ano da tabela
     df['Ano'] = year
 
