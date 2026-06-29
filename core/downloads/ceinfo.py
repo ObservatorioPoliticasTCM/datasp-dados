@@ -7,7 +7,8 @@ from logging import info
 from ..downloads import DEFAULT_HEADERS
 
 SAUDE_EM_DADOS_URL = {
-    2024: 'https://prefeitura.sp.gov.br/documents/d/saude/tabelas_ceinfo_dados_sub_2024_v3_rev09012025'
+    2024: 'https://prefeitura.sp.gov.br/documents/d/saude/tabelas_ceinfo_dados_sub_2024_v3_rev09012025',
+    2025: 'https://prefeitura.sp.gov.br/documents/d/saude/tabelas_ceinfo_saudedados_sub_2025_v2'
 }
 
 def load_consultas(year: int,
