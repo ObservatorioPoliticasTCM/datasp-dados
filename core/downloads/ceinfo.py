@@ -66,12 +66,15 @@ def load_consultas(year: int,
     df.loc[hifen, 'Qtd_Consultas'] = 0
     df['Qtd_Consultas'] = df['Qtd_Consultas'].astype(int)
     
-    # Por último, vamos corrigir os nomes das categorias.
+    # Corrigimos também os nomes das categorias.
     df['Categoria'] = df['Categoria'].apply(
         lambda c: 'Consulta Médica na Atenção Básica' if 'Atenção Básica' in c else c
     )
     df['Categoria'] = df['Categoria'].apply(
         lambda c: 'Consulta Médica/Atendimento em Urgência/Emergência' if 'Urgência' in c else c
     )
+
+    # Por último, adicionamos uma coluna com o ano da tabela
+    df['Ano'] = year
 
     return df
