@@ -1,0 +1,45 @@
+Leitos por Especialidade dos Estabelecimentos de Saúde do CNES - Município de São Paulo
+Leitos SUS por Subprefeitura e Leito por Tipo
+Período:Dez/2024
+"Subprefeitura";"1-Cirúrgico";"2-Clínico";"3-Complementar";"4-Obstétrico";"5-Pediátrico";"6-Outras Especialidades";"7-Hospital/DIA";"Total"
+"Aricanduva/ Formosa/ Carrão";-;-;-;-;-;95;-;95
+"Butantã";80;132;66;57;70;8;30;443
+"Campo Limpo";-;-;-;-;-;88;7;95
+"Capela do Socorro";54;155;96;62;38;28;33;466
+"Casa Verde/ Cachoeirinha";86;74;104;86;33;-;4;387
+"Cidade Ademar";-;-;-;-;-;-;14;14
+"Cidade Tiradentes";49;54;45;30;35;10;1;224
+"Ermelino Matarazzo";85;58;44;40;29;-;-;256
+"Freguesia/ Brasilândia";140;182;85;-;30;16;13;466
+"Guaianases";40;58;46;48;33;24;-;249
+"Ipiranga";350;232;86;47;-;15;42;772
+"Itaim Paulista";73;95;62;38;43;22;4;337
+"Itaquera";194;234;132;76;43;27;30;736
+"Jabaquara";107;149;73;-;29;139;-;497
+"Jaçanã/ Tremembé";33;95;-;35;32;710;-;905
+"Lapa";-;35;-;-;-;6;15;56
+"M Boi Mirim";118;340;100;90;84;63;13;808
+"Mooca";306;223;203;92;90;36;38;988
+"Parelheiros";75;73;20;28;26;15;-;237
+"Penha";13;31;-;-;5;22;7;78
+"Perus";-;14;3;-;5;6;-;28
+"Pinheiros";825;747;635;46;135;261;198;2847
+"Pirituba/ Jaraguá";70;108;51;40;35;158;16;478
+"Santana/ Tucuruvi";172;231;121;29;51;182;-;786
+"Santo Amaro";173;149;107;71;74;27;70;671
+"São Mateus";43;55;86;38;26;18;14;280
+"São Miguel";37;43;52;32;31;14;6;215
+"Sapopemba";45;92;46;33;6;20;6;248
+"Sé";592;593;282;27;139;540;59;2232
+"Vila Maria/ Vila Guilherme";43;58;36;18;16;9;6;186
+"Vila Mariana";504;556;335;94;167;252;180;2088
+"Vila Prudente";26;63;55;34;33;-;14;225
+"Total";4333;4929;2971;1191;1338;2811;820;18393
+Fonte: Ministério da Saúde/DATASUS/Cadastro Nacional de Estabelecimentos de Saúde – CNES
+NOTA:
+ Devido a limites no número de apresentação de linhas no Tabnet, restringimos a consulta aos estabelecimentos de saúde públicos e privados (contratados/conveniados
+ prestadores de serviços ao SUS) do MSP. Caso haja interesse em obter dados relativos aos demais estabelecimentos de saúde cadastrados no MSP, o interessado
+ poderá recorrer ao Tabnet – CNES do MS.
+ Informe do DATASUS de 23/12/2015: Competência 11/2015 o CNES passou a trabalhar exclusivamente com a Nat Jurídica proveniente de consumo das informações do CNPJ na R.F. do
+ Brasil para identificar a constituição jurídico-administrativa dos estabelecimentos de saúde, abandonando os campos Tipo de Prestador, Esfera Adm., Natureza da Org. e
+ Retenção de Tributos. (Port. Nº 1.319/SAS/MS/2014).
