@@ -1,10 +1,8 @@
-import requests
-from io import BytesIO
 import pandas as pd
 from logging import info
 
 
-from ..downloads import DEFAULT_HEADERS
+from .http_downloader import HttpDownloader
 
 SAUDE_EM_DADOS_URL = {
     2024: 'https://prefeitura.sp.gov.br/documents/d/saude/tabelas_ceinfo_dados_sub_2024_v3_rev09012025',
@@ -12,17 +10,20 @@ SAUDE_EM_DADOS_URL = {
 }
 
 def load_consultas(year: int,
-                   headers: dict = DEFAULT_HEADERS,
+                   headers: dict | None = None,
                    pandas_kwargs: dict | None = None,
-                   request_timeout: int = 600) -> pd.DataFrame:
+                   request_timeout: int | None = None) -> pd.DataFrame:
     url = SAUDE_EM_DADOS_URL.get(year)
     if not url:
         raise ValueError(f"No URL defined for year {year}.")
-    info(f'Downloading CEINFO data from {url}')
+    if headers is not None:
+        info(f"Using custom headers for HTTP request: {headers}")
+    if request_timeout is not None:
+        info(f"Using custom request timeout: {request_timeout} seconds")
 
-    response = requests.get(url, headers=headers, timeout=request_timeout)
-    response.raise_for_status()
-    xlsx_file = BytesIO(response.content)
+    http_downloader = HttpDownloader(headers=headers, request_timeout=request_timeout)
+    response = http_downloader.download(url)
+    xlsx_file = response
 
     # A tabela desejada é a `Consultas Medicas_Odontológicas`,
     # então vamos abri-la como um dataframe.
