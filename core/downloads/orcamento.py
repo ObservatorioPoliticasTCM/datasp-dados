@@ -15,13 +15,13 @@ import pandas as pd
 from logging import info
 
 
-from ..downloads import DEFAULT_HEADERS
+from .http_downloader import HttpDownloader
 
 
 def load_orcamento(year: int,
-                   headers: dict = DEFAULT_HEADERS,
+                   headers: dict | None = None,
                    pandas_kwargs: dict | None = None,
-                   request_timeout: int = 600) -> pd.DataFrame:
+                   request_timeout: int | None = None) -> pd.DataFrame:
     """Download budget execution (despesa) data for a given year.
 
     Fetches the CSV file published by SEPLAN at
@@ -32,14 +32,16 @@ def load_orcamento(year: int,
     ----------
     year : int
         The fiscal year to download (e.g. ``2024``).
-    headers : dict
-        HTTP request headers. Defaults to :data:`DEFAULT_HEADERS`.
+    headers : dict, optional
+        HTTP request headers. If None, inherits the default headers from
+        :class:`HttpDownloader`.
     pandas_kwargs : dict, optional
         Extra keyword arguments forwarded to :func:`pandas.read_csv`,
         overriding the defaults (``sep=';'``, ``decimal=','``,
         ``encoding='latin1'``, ``dtype=str``).
-    request_timeout : int
-        Timeout in seconds for the HTTP request. Defaults to ``600``.
+    request_timeout : int, optional
+        Timeout in seconds for the HTTP request. If None, inherits the
+        default timeout from :class:`HttpDownloader`.
 
     Returns
     -------
@@ -53,10 +55,16 @@ def load_orcamento(year: int,
         descriptive message.
     """
     url = f'https://prefeitura.sp.gov.br/documents/d/planejamento/basedadosexecucao_12{str(year)[-2:]}-csv'
-    info(f"Fetching data from URL: {url}")
+    if headers is not None:
+        info(f"Using custom headers for request: {headers}")
+    if request_timeout is not None:
+        info(f"Using custom request timeout: {request_timeout} seconds")
+    
+    http_downloader = HttpDownloader(headers=headers,
+                                     request_timeout=request_timeout)
+
     try:
-        response = requests.get(url, headers=headers, timeout=request_timeout)
-        response.raise_for_status()
+        response = http_downloader.download(url)
         csv_default_kwargs = {
             'sep': ';',
             'decimal': ',',
@@ -65,7 +73,7 @@ def load_orcamento(year: int,
         }
         if pandas_kwargs:
             csv_default_kwargs.update(pandas_kwargs)
-        df = pd.read_csv(BytesIO(response.content), **csv_default_kwargs)
+        df = pd.read_csv(response, **csv_default_kwargs)
         df['ANO'] = year
 
         info(f"Data for year {year} loaded successfully with shape {df.shape}")
@@ -74,9 +82,9 @@ def load_orcamento(year: int,
         raise Exception(f"Error fetching data: {str(e)}")
 
 def load_orcamento_r(year: int,
-                     headers: dict = DEFAULT_HEADERS,
+                     headers: dict | None = None,
                      pandas_kwargs: dict | None = None,
-                     request_timeout: int = 600) -> pd.DataFrame:
+                     request_timeout: int | None = None) -> pd.DataFrame:
     """Download budget execution (despesa) with administrative region data for a given year.
 
     Fetches the CSV file published by SEPLAN at
@@ -87,14 +95,16 @@ def load_orcamento_r(year: int,
     ----------
     year : int
         The fiscal year to download (e.g. ``2024``).
-    headers : dict
-        HTTP request headers. Defaults to :data:`DEFAULT_HEADERS`.
-    pandas_kwargs : dict, optional
+    headers : dict | None
+        HTTP request headers. If None, inherits the default headers from
+        :class:`HttpDownloader`.
+    pandas_kwargs : dict | None, optional
         Extra keyword arguments forwarded to :func:`pandas.read_csv`,
         overriding the defaults (``sep=';'``, ``decimal=','``,
         ``thousands='.'``, ``encoding='latin1'``, ``dtype=str``).
-    request_timeout : int
-        Timeout in seconds for the HTTP request. Defaults to ``600``.
+    request_timeout : int | None
+        Timeout in seconds for the HTTP request. If None, inherits the
+        default timeout from :class:`HttpDownloader`.
 
     Returns
     -------
@@ -110,10 +120,16 @@ def load_orcamento_r(year: int,
     url = f'https://prefeitura.sp.gov.br/cidade/secretarias/upload/seplan/arquivos/Exercicio_{year}/basedadosDA_{year}.csv'
     if year < 2024:
         url = f'https://prefeitura.sp.gov.br/cidade/secretarias/upload/seplan/arquivos/Exercicio_{year}/basedadosDA_12{str(year)[-2:]}.csv'
-    info(f"Fetching data from URL: {url}")
+    if headers is not None:
+        info(f"Using custom headers for request: {headers}")
+    if request_timeout is not None:
+        info(f"Using custom request timeout: {request_timeout} seconds")
+    
+    http_downloader = HttpDownloader(headers=headers,
+                                     request_timeout=request_timeout)
+    
     try:
-        response = requests.get(url, headers=headers, timeout=request_timeout)
-        response.raise_for_status()
+        response = http_downloader.download(url)
         csv_default_kwargs = {
             'sep': ';',
             'decimal': ',',
@@ -123,7 +139,7 @@ def load_orcamento_r(year: int,
         }
         if pandas_kwargs:
             csv_default_kwargs.update(pandas_kwargs)
-        df = pd.read_csv(BytesIO(response.content), **csv_default_kwargs)
+        df = pd.read_csv(response, **csv_default_kwargs)
         df['ANO'] = year
 
         info(f"Data for year {year} loaded successfully with shape {df.shape}")
