@@ -9,8 +9,6 @@ Both functions return a :class:`pandas.DataFrame` with an extra ``ANO`` column
 containing the requested year.
 """
 
-import requests
-from io import BytesIO
 import pandas as pd
 from logging import info
 
@@ -63,23 +61,20 @@ def load_orcamento(year: int,
     http_downloader = HttpDownloader(headers=headers,
                                      request_timeout=request_timeout)
 
-    try:
-        response = http_downloader.download(url)
-        csv_default_kwargs = {
-            'sep': ';',
-            'decimal': ',',
-            'encoding': 'latin1',
-            'dtype': str
-        }
-        if pandas_kwargs:
-            csv_default_kwargs.update(pandas_kwargs)
-        df = pd.read_csv(response, **csv_default_kwargs)
-        df['ANO'] = year
+    response = http_downloader.download(url)
+    csv_default_kwargs = {
+        'sep': ';',
+        'decimal': ',',
+        'encoding': 'latin1',
+        'dtype': str
+    }
+    if pandas_kwargs:
+        csv_default_kwargs.update(pandas_kwargs)
+    df = pd.read_csv(response, **csv_default_kwargs)
+    df['ANO'] = year
 
-        info(f"Data for year {year} loaded successfully with shape {df.shape}")
-        return df
-    except requests.exceptions.RequestException as e:
-        raise Exception(f"Error fetching data: {str(e)}")
+    info(f"Data for year {year} loaded successfully with shape {df.shape}")
+    return df
 
 def load_orcamento_r(year: int,
                      headers: dict | None = None,
@@ -128,21 +123,18 @@ def load_orcamento_r(year: int,
     http_downloader = HttpDownloader(headers=headers,
                                      request_timeout=request_timeout)
     
-    try:
-        response = http_downloader.download(url)
-        csv_default_kwargs = {
-            'sep': ';',
-            'decimal': ',',
-            'thousands': '.',
-            'encoding': 'latin1',
-            'dtype': str
-        }
-        if pandas_kwargs:
-            csv_default_kwargs.update(pandas_kwargs)
-        df = pd.read_csv(response, **csv_default_kwargs)
-        df['ANO'] = year
+    response = http_downloader.download(url)
+    csv_default_kwargs = {
+        'sep': ';',
+        'decimal': ',',
+        'thousands': '.',
+        'encoding': 'latin1',
+        'dtype': str
+    }
+    if pandas_kwargs:
+        csv_default_kwargs.update(pandas_kwargs)
+    df = pd.read_csv(response, **csv_default_kwargs)
+    df['ANO'] = year
 
-        info(f"Data for year {year} loaded successfully with shape {df.shape}")
-        return df
-    except requests.exceptions.RequestException as e:
-        raise Exception(f"Error fetching data: {str(e)}")
+    info(f"Data for year {year} loaded successfully with shape {df.shape}")
+    return df
