@@ -14,7 +14,7 @@ SAUDE_EM_DADOS_URL = {
 def load_consultas(year: int,
                    headers: dict = DEFAULT_HEADERS,
                    pandas_kwargs: dict | None = None,
-                   request_timeout: int = 600) -> pd.DataFrame:
+                   request_timeout: int = 60) -> pd.DataFrame:
     url = SAUDE_EM_DADOS_URL.get(year)
     if not url:
         raise ValueError(f"No URL defined for year {year}.")
