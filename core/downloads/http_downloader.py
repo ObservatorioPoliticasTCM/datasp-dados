@@ -20,12 +20,12 @@ DEFAULT_HEADERS = {
 
 class HttpDownloader:
     def __init__(self,
-                 headers: dict = DEFAULT_HEADERS,
-                 request_timeout: int = 60,
-                 retries: int = 3):
-        self.headers = headers
-        self.request_timeout = request_timeout
-        self.retries = retries
+                 headers: dict | None = None,
+                 request_timeout: int | None = None,
+                 retries: int | None = None):
+        self.headers = headers if headers is not None else DEFAULT_HEADERS
+        self.request_timeout = request_timeout if request_timeout is not None else 60
+        self.retries = retries if retries is not None else 3
 
     def download(self, url: str) -> BytesIO:
         if not url:
