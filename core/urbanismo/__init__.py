@@ -1,1 +1,1 @@
-from core.urbanismo.urban_parks_area import prepare_tracts, prepare_risk_area
+from core.urbanismo.risk_area import prepare_tracts, prepare_risk_area
