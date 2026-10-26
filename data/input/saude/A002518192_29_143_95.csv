@@ -1,0 +1,35 @@
+Mortalidade Geral em investigação
+Óbitos Residentes MSP por Subprefeitura residência
+Causa(Cap CID10): XV.  Gravidez parto e puerpério
+Sexo: Feminino
+Período:2025
+"Subprefeitura residência";"Óbitos_Residentes_MSP"
+"Aricanduva/Formosa/Carrão";2
+"Butantã";1
+"Campo Limpo";1
+"Capela do Socorro";3
+"Cidade Ademar";2
+"Guaianases";1
+"Ipiranga";2
+"Itaim Paulista";4
+"Itaquera";3
+"Jaçanã/Tremembé";3
+"M'Boi Mirim";1
+"Moóca";3
+"Penha";2
+"Perus";2
+"Pirituba";2
+"Santana/Tucuruvi";1
+"Santo Amaro";1
+"São Mateus";3
+"São Miguel";2
+"Sapopemba";2
+"Sé";1
+"Vila Maria/Vila Guilherme";3
+"Ignorado";1
+"Total";46
+Fonte: Sistema de Informações sobre Mortalidade – SIM/PRO-AIM – CEInfo –SMS-SP
+Notas:
+1. Para tabulações de proporções, o campo referente à proporção deve constar em linhas ou colunas.
+2. A partir de 2005, os óbitos por acidentes de trânsito passaram a ser qualificados com o apoio da Companhia de Engenharia de Tráfego – CET. Este processo tem uma defasagem temporal em relação ao momento em que o dado é disponibilizado.
+3. Dados provisórios. Atualizado em 23/10/2026.

@@ -1,0 +1,44 @@
+Mortalidade Geral em investigação
+Óbitos Residentes MSP por Subprefeitura residência
+Faixa Etária Infantil 1: < 7 dias, 7-27 dias, 28d-<1ano, Ign <1 ano
+Período:2025
+"Subprefeitura residência";"Óbitos_Residentes_MSP"
+"Aricanduva/Formosa/Carrão";18
+"Butantã";41
+"Campo Limpo";66
+"Capela do Socorro";79
+"Casa Verde/Cachoeirinha";37
+"Cidade Ademar";57
+"Cidade Tiradentes";32
+"Ermelino Matarazzo";14
+"Freguesia/Brasilândia";68
+"Guaianases";37
+"Ipiranga";33
+"Itaim Paulista";43
+"Itaquera";69
+"Jabaquara";16
+"Jaçanã/Tremembé";51
+"Lapa";23
+"M'Boi Mirim";67
+"Moóca";41
+"Parelheiros";25
+"Penha";58
+"Perus";27
+"Pinheiros";4
+"Pirituba";56
+"Santana/Tucuruvi";22
+"Santo Amaro";14
+"São Mateus";62
+"São Miguel";47
+"Sapopemba";35
+"Sé";29
+"Vila Maria/Vila Guilherme";40
+"Vila Mariana";8
+"Vila Prudente";17
+"Ignorado";32
+"Total";1268
+Fonte: Sistema de Informações sobre Mortalidade – SIM/PRO-AIM – CEInfo –SMS-SP
+Notas:
+1. Para tabulações de proporções, o campo referente à proporção deve constar em linhas ou colunas.
+2. A partir de 2005, os óbitos por acidentes de trânsito passaram a ser qualificados com o apoio da Companhia de Engenharia de Tráfego – CET. Este processo tem uma defasagem temporal em relação ao momento em que o dado é disponibilizado.
+3. Dados provisórios. Atualizado em 23/10/2026.
