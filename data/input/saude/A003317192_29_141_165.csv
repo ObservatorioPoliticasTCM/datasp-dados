@@ -1,0 +1,45 @@
+Mortalidade Infantil
+Coef mort infantil por Subprefeitura resid
+Período:2024
+"Subprefeitura resid";"Coef_mort_infantil"
+"Aricanduva/Formosa/Carrão";11,94
+"Butantã";8,41
+"Campo Limpo";10,25
+"Capela do Socorro";12,97
+"Casa Verde/Cachoeirinha";11,43
+"Cidade Ademar";11,77
+"Cidade Tiradentes";9,01
+"Ermelino Matarazzo";8,26
+"Freguesia/Brasilândia";15,18
+"Guaianases";13,96
+"Ipiranga";10,58
+"Itaim Paulista";12,11
+"Itaquera";12,19
+"Jabaquara";9,37
+"Jaçanã/Tremembé";12,24
+"Lapa";3,50
+"M'Boi Mirim";10,21
+"Mooca";11,56
+"Parelheiros";9,22
+"Penha";12,96
+"Perus";14,02
+"Pinheiros";4,92
+"Pirituba";11,75
+"Santana/Tucuruvi";9,25
+"Santo Amaro";11,09
+"São Mateus";14,20
+"São Miguel";13,12
+"Sapopemba";12,95
+"Sé";9,47
+"Vila Maria/Vila Guilherme";14,40
+"Vila Mariana";3,00
+"Vila Prudente";8,08
+"Ignorado";320,00
+"Total";11,23
+Fonte:SIM/SINASC/CEInfo/SMS-SP
+Notas:
+1. Para tabulações de proporções, o campo referente à proporção deve constar em linhas ou colunas.
+2. Coeficientes podem ser tabuladas por Distrito Administrativo e seus agregados (Supervisão de Saúde e Região), além de ano e mês.
+3. Coeficientes resultantes de 20 óbitos ou menos no numerador são considerados não confiáveis por apresentarem erro padrão relativo de 23% ou mais.
+Fonte: https://www.health.ny.gov/diseases/chronic/ratesmall.htm
+4. Não recomendamos utilizar os coeficientes de mortalidade por causas externas especificadas dos anos de 2021 em diante. Estas investigações estão sendo realizadas nas agências do IML na cidade pelo Proaim. Quando estas forem encerradas
