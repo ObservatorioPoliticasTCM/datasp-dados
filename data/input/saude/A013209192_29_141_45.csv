@@ -1,0 +1,46 @@
+Mortalidade Geral em investigação
+Óbitos Residentes MSP por Subprefeitura residência
+Causa(CID10 3C): O00 Gravidez ectopica, O01 Mola hidatiforme, O02 Outr produtos anormais da concepcao, O03 Aborto espontaneo, O04 Aborto p/razoes medicas e legais, O05 Outr tipos de aborto, O06 Aborto NE, O07 Falha de tentativa de aborto, O08 Complic conseq aborto gravidez ectop molar, O10 Hipertens pre-exist complic grav parto puerp, O11 Dist hipertens pre-exist proteinuria superp, O12 Edema e proteinuria gestac s/hipertensao, O13 Hipertensao gestacional s/proteinuria signif, O14 Hipertensao gestacional c/proteinuria signif, O15 Eclampsia, O16 Hipertensao materna NE, O20 Hemorragia do inicio da gravidez, O21 Vomitos excessivos na gravidez, O22 Complic venosas na gravidez, O23 Infecc do trato geniturinario na gravidez, O24 Diabetes mellitus na gravidez, O25 Desnutric na gravidez, O26 Assist materna outr complic lig predom grav, O28 Achados anorm rastr antenatal mae, O29 Complic anestesia admin durante gravidez, O30 Gestacao mult, O31 Complic especificas de gestacao mult, O32 Assist prest mae apres anorm conh susp feto, O33 Assist prest mae desprop conhecida suspeita, O34 Assist prest mae anor conh susp org pelv mat, O35 Assist prest mae anorm lesao fet conhec susp, O36 Assist prest mae outr probl fet conhec susp, O40 Polihidramnio, O41 Outr transt membranas e liquido amniotico, O42 Ruptura prematura de membranas, O43 Transt da placenta, O44 Placenta previa, O45 Descolamento prematuro da placenta, O46 Hemorragia anteparto NCOP, O47 Falso trabalho de parto, O48 Gravidez prolongada, O60 Parto pre-termo, O61 Falha na inducao do trabalho de parto, O62 Anormalidades da contracao uterina, O63 Trabalho de parto prolongado, O64 Obstr trab parto dev ma-posic ma-apres feto, O65 Obstr trab parto dev anorm pelvica da mae, O66 Outr form de obstrucao do trabalho de parto, O67 Trab parto parto compl hemorr intrapart NCOP, O68 Trab parto e parto complic sofrimento fetal, O69 Trab parto parto compl anorm cordao umbilic, O70 Laceracao do perineo durante o parto, O71 Outr traum obstetricos, O72 Hemorragia pos-parto, O73 Retencao placenta e membranas s/hemorragias, O74 Complic anestesia durante trab parto e parto, O75 Outr complic do trab parto e do parto NCOP, O80 Parto unico espontaneo, O81 Parto unico p/forceps ou vacuo-extrator, O82 Parto unico p/cesariana, O83 Outr tipos de parto unico assistido, O84 Parto mult, O85 Infecc puerperal, O86 Outr infecc puerperais, O87 Complic venosas no puerperio, O88 Embolia orig obstetrica, O89 Complic da anestesia admin durante puerperio, O90 Complic do puerperio NCOP, O91 Infecc mamarias assoc ao parto, O92 Outr afeccoes mama e lactacao assoc ao parto, O95 Morte obstetrica de causa NE, O98 Doen inf paras mat COP compl grav part puerp, O99 Outr doenc mat COP compl grav parto puerp
+FX Etária de 5 em 5a: 10-14a, 15-19a, 20-24a, 25-29a, 30-34a, 35-39a, 40-44a, 45-49a
+Sexo: Feminino
+Período:2025
+"Subprefeitura residência";"Óbitos_Residentes_MSP"
+"Aricanduva/Formosa/Carrão";2
+"Butantã";1
+"Campo Limpo";1
+"Capela do Socorro";2
+"Casa Verde/Cachoeirinha";-
+"Cidade Ademar";2
+"Cidade Tiradentes";-
+"Ermelino Matarazzo";-
+"Freguesia/Brasilândia";-
+"Guaianases";-
+"Ipiranga";2
+"Itaim Paulista";3
+"Itaquera";3
+"Jabaquara";-
+"Jaçanã/Tremembé";1
+"Lapa";-
+"M'Boi Mirim";1
+"Mooca";3
+"Parelheiros";-
+"Penha";2
+"Perus";2
+"Pinheiros";-
+"Pirituba";2
+"Santana/Tucuruvi";1
+"Santo Amaro";1
+"São Mateus";3
+"São Miguel";2
+"Sapopemba";2
+"Sé";1
+"Vila Maria/Vila Guilherme";3
+"Vila Mariana";-
+"Vila Prudente";-
+"Ignorado";2
+"Total";42
+Fonte: Sistema de Informações sobre Mortalidade – SIM/PRO-AIM – CEInfo –SMS-SP
+Notas:
+1. Para tabulações de proporções, o campo referente à proporção deve constar em linhas ou colunas.
+2. A partir de 2005, os óbitos por acidentes de trânsito passaram a ser qualificados com o apoio da Companhia de Engenharia de Tráfego – CET. Este processo tem uma defasagem temporal em relação ao momento em que o dado é disponibilizado.
+3. Dados provisórios. Atualizado em 06/11/2026.
